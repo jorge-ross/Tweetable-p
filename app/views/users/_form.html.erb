@@ -27,16 +27,10 @@
   </div>
   <div>
   <h5 style="margin-top: 8px; margin-bottom: 8px;" >AVATAR</h5>
-    <% if user.avatar.attached? %>
-      <%= image_tag user.avatar, style: 'width: 48px; height: 48px; border-radius: 50px; margin-bottom: 12px;'%>
-    <% else %> 
-      <%= image_tag "user/default_user.png", style: 'width: 48px; height: 48px; border-radius: 50px; margin-bottom: 12px;'%> 
-    <% end %>
-    <div>
-      <%= form.label :image %>
-      <%= form.file_field :image, value: "Select file" %>
-    </div>
+    <%= image_tag user.avatar, style: 'width: 48px; height: 48px; border-radius: 50px; margin-bottom: 12px;'%>
+    <%= form.file_field :avatar, value: "Select file" %>
   </div>
+
 
   <div>
     <%= form.label :password, style: "display: block"  %>

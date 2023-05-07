@@ -2,9 +2,9 @@
 
 <div>
 <% if user.avatar.attached? %>
-  <%= image_tag user.avatar, alt: "Image to #{user.name}"%>
+  <%= image_tag user.avatar, alt: "Image to #{user.name}", style: 'width: 48px; height: 48px; border-radius: 50px;' %>
 <% else %>
-  <%= image_tag "default_user.png", alt: "Default user"%>
+  <%= image_tag "default_user.png", alt: "Default user", style: 'width: 48px; height: 48px; border-radius: 50px;'%>
 <% end %>
   <p>
     <strong>Email:</strong>
