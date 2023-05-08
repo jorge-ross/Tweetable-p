@@ -11,6 +11,29 @@
   </head>
 
   <body>
+  <header>
+   <%= link_to root_path do %>
+    <%= image_tag "tweetable.png" %>
+   <% end %>
+   <ul>
+   <li>
+     <%= button_to "My Profile", @user, method: :get %>
+   </li>
+   <li>
+     <%= button_to "Sign out", method: :delete, data: {turbo: false} %>
+   </li>
+   </ul>
+   </header>
+
     <%= yield %>
+
+    <footer>
+    <p>----------------------------------------------------------------------------------------</p>
+    <p>Made with &#9829 by</p>     
+    <a href="https://github.com//jorge-ross">Jorge Ross</a>
+    <br>
+    <br>
+    <span>© 2023 - Codeable </span>
+    </footer>
   </body>
 </html>
