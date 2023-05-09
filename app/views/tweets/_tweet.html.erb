@@ -1,27 +1,36 @@
 <div id="<%= dom_id tweet %>">
+<div class="tweet-card">
   <p>
-    <strong>Body:</strong>
+  <%= link_to tweet.user do%>
+    <% if tweet.user.avatar.attached? %>
+        <%= image_tag tweet.user.avatar, style: 'width: 48px; height: 48px; border-radius: 48px;' %>
+      <% else %>
+        <%=  image_tag "user/default_user.jpg"%>
+    <% end %>
+      <%= tweet.user[:name]%>
+      <%= tweet.user[:username]%>
+  <% end %>
+
+  </p>
+  <div class="tweet-display">
+  <%= link_to tweet do%>
+  <p>
     <%= tweet.body %>
   </p>
 
+    <% end %>
   <p>
-    <strong>Replies count:</strong>
+    <%= image_tag "replies-icon.png", style: 'width: 16px; height: 16px;'%>
     <%= tweet.replies_count %>
   </p>
 
   <p>
-    <strong>Likes count:</strong>
+    <%= image_tag "like-icon.png", style: 'width: 16px; height: 16px;'%>
     <%= tweet.likes_count %>
   </p>
 
-  <p>
-    <strong>User:</strong>
-    <%= tweet.user_id %>
-  </p>
+ 
+  </div>
 
-  <p>
-    <strong>Replied to:</strong>
-    <%= tweet.replied_to_id %>
-  </p>
-
+</div>
 </div>

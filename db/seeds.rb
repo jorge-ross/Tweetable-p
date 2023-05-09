@@ -18,19 +18,19 @@ ActiveRecord::Base.connection.reset_pk_sequence!('likes')
 
 puts "Seeding users"
 
-admin = User.create(email: "admin@mail.com", username: "@anonymous", name: "Anonymous", password: "qwerty", role: 1)
+admin = User.create(email: "admin@mail.com", username: "@anonymous", name: "Anonymous", password: "supersecret", role: 1)
 admin.avatar.attach(io: File.open("app/assets/images/user/anonymous.png"), filename: "anonymous.png")
 
-schopi = User.create(email: "schopi@mail.com", username: "@schopi", name: "Arthur Schopenhauer", password: "qwerty", role: 1)
+schopi = User.create(email: "schopi@mail.com", username: "@schopi", name: "Arthur Schopenhauer", password: "qwerty", role: 0)
 schopi.avatar.attach(io: File.open('app/assets/images/user/Arthur Schopenhauer.jpg'), filename: 'Arthur Schopenhauer.jpg')
 
 musk = User.create(email: "musk@mail.com", username: "@notmusk", name: "Not Elon Musk", password: "qwerty", role: 0)
 musk.avatar.attach(io: File.open('app/assets/images/user/Elon Musk.jpg'), filename: 'Elon Musk.jpg')
 
-margot = User.create(email: "margot@mail.com", username: "@margotrobbie", name: "Margot Robbie", password: "qwerty", role: 1)
+margot = User.create(email: "margot@mail.com", username: "@margotrobbie", name: "Margot Robbie", password: "qwerty", role: 0)
 margot.avatar.attach(io: File.open('app/assets/images/user/Margot Robbie.jpg'), filename: 'Margot Robbie.jpg')
 
-tony = User.create(email: "tony@mail.com", username: "@tonyhawk", name: "Tony Hawk", password: "qwerty", role: 1)
+tony = User.create(email: "tony@mail.com", username: "@tonyhawk", name: "Tony Hawk", password: "qwerty", role: 0)
 tony.avatar.attach(io: File.open('app/assets/images/user/Tony Hawk.jpg'), filename: 'Tony Hawk.jpg')
 
 puts "Seeding tweets"
@@ -54,5 +54,9 @@ Tweet.create(body: "Cool", user_id: 5, replied_to_id: 1)
 Tweet.create(body: "Or a heelflip!", user_id: 4, replied_to_id: 5)
 
 Tweet.create(body: "Haha F world...", user_id: 1, replied_to_id: 2)
+
+Tweet.create(body: "This is my test tweet.", user_id: 1)
+
+Tweet.create(body: "This is my second test tweet.", user_id: 1)
 
 puts "Seeding process finished"

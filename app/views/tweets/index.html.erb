@@ -1,12 +1,19 @@
 <h1>Home</h1>
 
+<%= form_with url: tweets_path, model: @new_tweet do |form| %>
+  <div class="new-tweet">
+    <%= form.text_area :body, placeholder: "Remember to think before writing", class: "tweet-body" %>
+    <%= form.submit "TWEET"%>
+  </div>
+<%end%>
+
 <div id="tweets">
-  <% @tweets.each do |tweet| %>
+  <% @tweets.sort.reverse.each do |tweet| %>
+   <% if tweet.replied_to.nil? %>
     <%= render tweet %>
-    <p>
-      <%= link_to "Show this tweet", tweet %>
-    </p>
+   <% end %>
   <% end %>
 </div>
+
 
 <%= link_to "New tweet", new_tweet_path %>
