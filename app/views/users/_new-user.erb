@@ -1,51 +1,91 @@
 <%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div>
-    <%= form.label :username, style: "display: block" %>
-    <%= form.text_field :username %>
-  </div>
+    <% if user.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-  <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-  <div>
-  <h5 style="margin-top: 8px; margin-bottom: 8px;" >AVATAR</h5>
-    <% if user.avatar.attached? %>
-      <%= image_tag user.avatar, style: 'width: 48px; height: 48px; border-radius: 50px; margin-bottom: 12px;'%>      
+        <ul>
+          <% user.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
+    
     <div>
-      <%= form.file_field :avatar, value: "Select file" %>
+      <div>
+        <%= form.label :email %>
+        <%= form.email_field :email, placeholder: "example@mail.com" %>
+      </div>
+      <% if user.errors.messages[:email].any? %>
+        <%= user.errors.messages[:email].join(", ")%>
+      <% end %>
     </div>
-  </div>
 
-  <div>
-    <%= form.label :password, style: "display: block"  %>
-    <%= form.password_field :password, placeholder: "*****" %>
-  </div>
+    <div>
+        <div>
+          <%= form.label :username %>
+          <%= form.text_field :username, placeholder: "example" %>
+        </div>
+        <% if user.errors.messages[:username].any? %>
+            <%= user.errors.messages[:username].join(", ")%>
+        <% end %>
+    </div>
 
-  <div>
-    <%= form.label :password_confirmation, style: "display: block"  %>
-    <%= form.password_field :password, placeholder: "*****" %>
-  </div>
+    <div>
+      <div>
+        <%= form.label :name %>
+        <%= form.text_field :name, placeholder: "Example Name" %>
+      </div>
+      <% if user.errors.messages[:name].any? %>
+        <%= user.errors.messages[:name].join(", ")%>
+      <% end %>
+    </div>
 
-  <div>
-    <%= form.submit "Sign up" %>
+     <div>
+      <div>
+      <h5 style="margin-top: 8px; margin-bottom: 8px;" >AVATAR</h5>
+          <% if user.avatar.attached? %>
+            <%= image_tag user.avatar, style: 'width: 96px; height: 96px; border-radius: 50px;'%>
+          <% else %>
+            <%= image_tag "default_user.png"%>
+          <% end %>
+      </div>
+      <div>
+        <%= form.label :image %>
+        <%= form.file_field :image, value: "Select file" %>
+      </div>
+      <% if user.errors.messages[:avatar].any? %>
+        <%= user.errors.messages[:avatar].join(", ")%>
+      <% end %>
+    </div>
+
+    <div>
+      <div>
+        <%= form.label :password %>
+        <%= form.password_field :password, placeholder: "********" %>
+      </div>
+      <% if user.errors.messages[:password].any? %>
+        <span class="content-sm input__error-message block">
+          <%= user.errors.messages[:password].join(", ")%>
+        </span>
+      <% end %>
+    </div>
+
+    <div>
+      <div>
+        <%= form.label :password_confirmation %>
+        <%= form.password_field :password_confirmation,  placeholder: "**********" %>
+      </div>
+      <% if user.errors.messages[:password_confirmation].any? %>
+        <span class="content-sm input__error-message block">
+          <%= user.errors.messages[:password_confirmation].join(", ")%>
+        </span>
+      <% end %>
+    </div>
+
+    <div class="w-full">
+      <%= form.submit "Sign up", class: "w-full button button--primary" %>
+    </div>
   </div>
 <% end %>
