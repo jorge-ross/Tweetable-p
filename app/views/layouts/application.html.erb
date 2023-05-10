@@ -20,7 +20,7 @@
      <%= button_to "My Profile", @user, method: :get %>
    </li>
    <li>
-     <%= button_to "Sign out", method: :delete, data: {turbo: false} %>
+     <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: {turbo: false} %>
    </li>
    </ul>
    </header>

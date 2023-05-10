@@ -1,5 +1,5 @@
 <div>
-  <%= form_with url: tweets_path do |form| %>
+  <%= form_with url: tweets_path, method: :post do |form| %>
       <div class="new-tweet">
           <%= form.text_area :body, placeholder: "Remember to think before writing", rows: 3, class: "tweet-body"%>
          
