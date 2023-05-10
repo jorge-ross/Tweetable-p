@@ -1,11 +1,10 @@
 <h1>Home</h1>
 
-<%= form_with url: tweets_path, model: @new_tweet do |form| %>
-  <div class="new-tweet">
-    <%= form.text_area :body, placeholder: "Remember to think before writing", class: "tweet-body" %>
-    <%= form.submit "TWEET"%>
-  </div>
-<%end%>
+  <%# <% if  current_user %>
+    <div>
+      <%= render "create", new_tweet: @new_tweet, parent_tweet: nil %>
+    </div>
+  <%# <% end %> 
 
 <div id="tweets">
   <% @tweets.sort.reverse.each do |tweet| %>

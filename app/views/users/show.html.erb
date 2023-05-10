@@ -2,12 +2,23 @@
 
 <%= render @user %>
 
+<% @user.tweets.each do |tweet| %> 
+<p>
+    <%= tweet.body %>
+  </p>
 
+   <p>
+    <%= image_tag "replies-icon.png", style: 'width: 16px; height: 16px;'%>
+    <%= tweet.replies_count %>
+  </p>
 
+  <p>
+    <%= image_tag "like-icon.png", style: 'width: 16px; height: 16px;'%>
+    <%= tweet.likes_count %>
+  </p>
+
+ <% end %>
 
 <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
+  <% link_to "Edit this user", edit_user_path(@user) %> 
 </div>
