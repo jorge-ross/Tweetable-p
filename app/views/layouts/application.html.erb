@@ -15,20 +15,25 @@
    <%= link_to root_path do %>
     <%= image_tag "tweetable.png" %>
    <% end %>
+
+    <% if user_signed_in? %> 
    <ul>
    <li>
-     <%= button_to "My Profile", @user, method: :get %>
+     <%= button_to "My Profile", current_user, method: :get %>
    </li>
    <li>
      <%= button_to "Sign out", destroy_user_session_path, method: :delete, data: {turbo: false} %>
    </li>
    </ul>
+    <div>Welcome <%= current_user.name %></div>   
+    <% end %>
    </header>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%# <p class="notice"><%= notice %></p>
+    <%# <p class="alert"><%= alert %></p> 
 
     <%= yield %>
+    <%# <= button_to "Sign up", new_user_session_path, method: :get %> 
 
     <footer>
     <p>----------------------------------------------------------------------------------------</p>
