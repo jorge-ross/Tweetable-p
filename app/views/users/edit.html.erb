@@ -8,3 +8,6 @@
   <% link_to "Show this user", @user %>
   <%= button_to "Back to user", user_path, method: :get %>
 </div>
+
+
+<%= button_to 'Delete account', @user, method: :delete, data: { turbo_confirm: 'Are you sure?' } %>
