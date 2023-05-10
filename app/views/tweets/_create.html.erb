@@ -1,12 +1,8 @@
 <div>
-  <%= form_with url: tweets_path, model: new_tweet do |form| %>
+  <%= form_with url: tweets_path do |form| %>
       <div class="new-tweet">
           <%= form.text_area :body, placeholder: "Remember to think before writing", rows: 3, class: "tweet-body"%>
-          <% if !parent_tweet.nil? %>
-              <%= form.hidden_field :replied_to_id, value: parent_tweet.id %>
-          <% else %>
-              <%= form.hidden_field :replied_to_id, value: nil %>
-          <% end %>
+         
           <%= form.submit "Tweet"%>
       </div>   
   <% end %>

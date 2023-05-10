@@ -2,7 +2,7 @@
 
 <%= render @user %>
 
-<% @user.tweets.each do |tweet| %> 
+<% @user.tweets.sort.reverse.each do |tweet| %> 
 <p>
     <%= tweet.body %>
   </p>
