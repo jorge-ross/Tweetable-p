@@ -27,7 +27,11 @@
   </div>
   <div>
   <h5 style="margin-top: 8px; margin-bottom: 8px;" >AVATAR</h5>
+  <% if user.avatar.attached? %>
     <%= image_tag user.avatar, style: 'width: 48px; height: 48px; border-radius: 50px; margin-bottom: 12px;'%>
+    <% else %>
+    <%= image_tag "default_user.png"%>
+  <% end %>
     <%= form.file_field :avatar, value: "Select file" %>
   </div>
 
