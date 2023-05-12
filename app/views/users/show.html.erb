@@ -1,10 +1,11 @@
 <%= render @user %>
 
 <% @user.tweets.sort.reverse.each do |tweet| %> 
+<%= link_to tweet do%>
 <p>
-    <%= tweet.body %>
-  </p>
-
+  <%= tweet.body %>
+</p>
+ <% end %>
    <p>
     <%= image_tag "replies-icon.png", style: 'width: 16px; height: 16px;'%>
     <%= tweet.replies_count %>

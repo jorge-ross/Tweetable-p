@@ -10,12 +10,15 @@ class TweetsController < ApplicationController
 
   # GET /tweets/1
   def show
+    @tweet_new = Tweet.new
+    @new_like = Like.new
+    @in_tweet = Tweet.find(params[:id])
   end
 
   # GET /tweets/new
-  # def new
-  #   @tweet = Tweet.new
-  # end
+  def new
+    @tweet = Tweet.new
+  end
 
   # GET /tweets/1/edit
   def edit
@@ -24,7 +27,10 @@ class TweetsController < ApplicationController
   # POST /tweets
   def create
     @new_tweet = Tweet.new(tweet_params)
-
+    if !params[:tweet][:replied_to_id].empty?
+      redirect_to @tweet.replied_to
+    end
+    @new_tweet.user_id = current_user.id
     @new_tweet.save
 
     redirect_to root_path
@@ -42,7 +48,7 @@ class TweetsController < ApplicationController
   # DELETE /tweets/1
   def destroy
     @tweet.destroy
-    redirect_to tweets_url, notice: "Tweet was successfully destroyed."
+    redirect_to root_path, notice: "Tweet was successfully destroyed."
   end
 
   private
@@ -54,6 +60,6 @@ class TweetsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def tweet_params
       # binding.pry
-      params.require(:tweet).permit(:body, :user_id, :replied_to_id)
+      params.require(:tweet).permit(:body, :user_id, :replied_to_id, :replied_to, :replies_count, :likes_count)
     end
 end

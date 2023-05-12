@@ -6,7 +6,7 @@ class Tweet < ApplicationRecord
 
   has_many :replies, class_name: "Tweet",
                      foreign_key: "replied_to_id",
-                     dependent: :destroy,
+                     dependent: :nullify,
                      inverse_of: "replied_to"
   has_many :likes, dependent: :destroy, inverse_of: "tweet"
   
